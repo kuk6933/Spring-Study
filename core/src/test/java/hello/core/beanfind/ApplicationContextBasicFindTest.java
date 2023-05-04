@@ -46,4 +46,4 @@ public class ApplicationContextBasicFindTest {
         assertThrows(NoSuchBeanDefinitionException.class,
                 () -> ac.getBean("xxxx", MemberService.class)); // 오른쪽 로직을 실행하면 왼쪽 예외가 던져져야 성공임
     }
-} 
+}
