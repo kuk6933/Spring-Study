@@ -22,14 +22,15 @@ public class ApplicationContextExtendsFindTest {
     @Test
     @DisplayName("부모 타입으로 조회시,  자삭이 둘 이상있으면 중복 오류가 발생한다")
     void findBeanByPrentTypeDuplicate() {
-        assertThrows(NoUniqueBeanDefinitionException.class,
-                () -> ac.getBeansOfType(DiscountPolicy.class));
+        assertThrows(NoUniqueBeanDefinitionException.class, () ->
+                ac.getBean(DiscountPolicy.class));
     }
 
     @Test
     @DisplayName("부모 타입으로 조회시,  자삭이 둘 이상있으면 빈 이름을 지정하면 된다")
     void findBeanByPrentTypeBeanName() {
-        DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy", DiscountPolicy.class);
+        DiscountPolicy rateDiscountPolicy = ac.getBean("rateDiscountPolicy",
+                DiscountPolicy.class);
         assertThat(rateDiscountPolicy).isInstanceOf(RateDiscountPolicy.class);
     }
 

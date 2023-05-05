@@ -12,15 +12,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration //설정정보, 구성정보 - 싱글톤을 위해 존재
 public class AppConfig {
 
-    // @Bean memberService -> new MemoryMemberRepository()
-    // @Bean orderService -> new MemoryMemberRepository() 이렇게 두번 호출되는게 아닌가? 싱글톤이 깨지는게 아닌가?
 
-    //call AppConfig.memberService
-    //call AppConfig.memberRepository
-    //call AppConfig.memberRepository
-    //call AppConfig.orderService
-    //call AppConfig.memberRepository
-
+       @Bean //sPRING container에 등록하게됨
+    public static MemoryMemberRepository getMemberRepository() {
+       return new MemoryMemberRepository();
+   }
     @Bean
     public MemberService memberService() {
         System.out.println("call AppConfig.memberService");
