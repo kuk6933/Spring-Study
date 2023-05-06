@@ -20,7 +20,8 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig {
 
-        @Bean(initMethod = "init", destroyMethod = "close") //destroy의 default는 inferred인데 이 추론 기능은 close, suhtdown이라는 메서드가 있으면 자동으로 해줌
+        //@Bean(initMethod = "init", destroyMethod = "close") //destroy의 default는 inferred인데 이 추론 기능은 close, suhtdown이라는 메서드가 있으면 자동으로 해줌
+        @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://helo-spring.dev");
