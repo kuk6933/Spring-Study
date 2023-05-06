@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfig {
 
 
-       @Bean //sPRING container에 등록하게됨
+    @Bean //sPRING container에 등록하게됨
     public static MemoryMemberRepository getMemberRepository() {
        return new MemoryMemberRepository();
    }
