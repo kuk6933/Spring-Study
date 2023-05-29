@@ -1,12 +1,10 @@
 package umc.study.member;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -19,16 +17,20 @@ public class MemberService {
         memberRepository.save(member);
     }
 
-    public Member findMember(Long id) { //R
-        return memberRepository.findMember(id);
+    public Optional<Member> findMember(Long id) { //R
+        return memberRepository.findById(id);
     }
 
-    public void updateMember(Long id, String name) {
-        memberRepository.updateMember(id, name);
+    public void updateAddress(Long id, String address) {
+        Optional<Member> tmpMember = memberRepository.findById(id);
+        if(!tmpMember.isPresent()) {
+            return;
+        }
+        Member member = tmpMember.get();
+        member.setAddress(address);
     }
-
 
     public void deleteMember(Long id) {
-        memberRepository.deleteMember(id);
+        memberRepository.deleteById(id);
     }
 }

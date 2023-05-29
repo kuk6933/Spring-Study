@@ -23,4 +23,5 @@ public class Store {
     private String registration_num;
     private String facility;
     private String guidance;
+    private String phoneNumber;
 }
