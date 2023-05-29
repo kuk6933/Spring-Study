@@ -18,7 +18,7 @@ public class Member {
 
     @Embedded
     private Address address;
-    
+
     @OneToMany(mappedBy = "member") //나는 매피될 애일 뿐이야
     private List<Order> orders = new ArrayList<>();
 }

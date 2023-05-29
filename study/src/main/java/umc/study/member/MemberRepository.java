@@ -1,39 +1,32 @@
 package umc.study.member;
 
 import jakarta.persistence.EntityManager;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
+    private final EntityManager em;
 
-    private static List<Member> members = new ArrayList<>();
-    private static int usersCount = 0;
-
-    public List<Member> findAll() {
-        return members;
+    public void save(Member member) {
+        em.persist(member);
     }
 
-    public Member join(Member member) {
-        members.add(member);
-        return member;
+    public Member findMember(Long id) {
+        return em.find(Member.class, id);
     }
 
-    public void updateMember(Long id,Member member) {
-
+    public Member updateMember(Long id, String newName) {
+        return em.find(Member.class, id);
     }
 
     public void deleteMember(Long id) {
-        Iterator<Member> iterator = members.iterator();
-
-        while(iterator.hasNext()) {
-            Member member = iterator.next();
-
-            if(member.getId() == id) {
-                iterator.remove();
-            }
-        }
+        em.remove(em.find(Member.class, id));
     }
 }
