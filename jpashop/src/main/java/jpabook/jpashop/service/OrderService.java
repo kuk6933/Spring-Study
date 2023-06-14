@@ -26,7 +26,7 @@ public class OrderService {
 
     //주문
     @Transactional
-    public Long order(Long memberId, Long itemId, int count) {
+    public Long order(Long memberId, Long itemId, int count) { //이렇게 받아서 Transaction안에서 member 찾고 하는게 좋음
 
         //엔티티 조회
         Member member = memberRepository.findOne(memberId);
