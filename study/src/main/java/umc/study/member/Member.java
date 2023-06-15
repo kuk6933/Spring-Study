@@ -17,17 +17,17 @@ public class Member {
     @Id @GeneratedValue
     private Long id;
     @NotNull
-    private String login_id;
+    private String loginId;
     @NotNull
-    private String login_pw;
+    private String loginPw;
     @NotNull
-    private String phone_number;
+    private String phoneNumber;
     @Email
     private String email;
     @Positive
     private int grade;
     @PositiveOrZero
-    private int order_count;
+    private int orderCount;
     @NotNull
     private String name;
     @NotNull
